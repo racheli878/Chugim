@@ -7,6 +7,7 @@
 ## שיטת עבודה (חובה)
 - מבצעים **משימה אחת** מ-PLAN.md, מסבירים בקצרה מה נעשה ולמה, ו**עוצרים לאישור** לפני המשימה הבאה.
 - אחרי אישור — מסמנים את המשימה `[x]` ב-PLAN.md.
+- הסברים תמציתיים אך ברורים.
 - אין כפל קוד. קוד ברור, יעיל וקריא. הערות בעברית רק במקומות שבהם ה"למה" לא מובן מאליו.
 
 ## טכנולוגיות
@@ -39,7 +40,7 @@ tests/Chugim.Tests                                                     → Appli
 - Concurrency token: ‏`Guid Version` על Course, מוגדר ב-Fluent API (`IsConcurrencyToken`), ומוחלף אוטומטית בדריסת `SaveChangesAsync`.
 - UnitOfWork (Infrastructure) מתרגם `DbUpdateConcurrencyException` ל-`ConcurrencyConflictException` (Application).
 - EnrollmentService: בהתנגשות — לוג Warning וניסיון חוזר עד 3 פעמים עם קריאה טרייה; חוג מלא → 409 "החוג מלא"; התנגשות מתמשכת → 409 "נסי שוב".
-- Services מחזירים `Result<T>`; ההמרה לסטטוס HTTP נעשית במקום אחד (ApiControllerBase).
+- Services מחזירים `Result` / `Result<T>` (ב-`Application/Common`, עם המרות מרומזות מ-T ומ-Error); ההמרה לסטטוס HTTP נעשית במקום אחד (ApiControllerBase).
 - Pagination דרך מתודת הרחבה אחת `ToPagedResultAsync` (Skip/Take בתוך השאילתה).
 - Roles: ‏Participant, Admin.
 - טיפוסים: `DayOfWeek`, `TimeOnly StartTime`, `DateOnly StartDate`, `decimal Price`, `DateTime EnrolledAtUtc`.

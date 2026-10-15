@@ -87,7 +87,7 @@ Chugim.sln
 ## 6. המשימות
 
 ### שלב 0 — הקמה
-- [ ] **0.1** יצירת solution, 5 פרויקטים בתיקיות src/tests, הפניות לפי כיוון התלויות, .gitignore, git init
+- [x] **0.1** יצירת solution, 5 פרויקטים בתיקיות src/tests, הפניות לפי כיוון התלויות, .gitignore, git init
 
 ### שלב 1 — Domain
 - [ ] **1.1** Entities + Enums + חוקי Course (Enroll / ReleaseSpot / ChangeCapacity)
