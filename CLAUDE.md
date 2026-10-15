@@ -78,3 +78,5 @@ tests/Chugim.Tests                                                     → Appli
 - Controllers יורשים `ApiControllerBase`: ‏`FromResult` (200/204 או ProblemDetails), ‏`CreatedFromResult` (201 + Location). ‏ModelState נבדק אוטומטית ע"י [ApiController] (400 עם פירוט שדות).
 - Endpoints: ‏auth/register (201, בלי Location — אין GET למשתמשת), auth/login (200); courses — GET פתוח, POST/PUT/DELETE + `{id}/enrollments` למנהלת; enrollments — [Authorize], POST למשתתפת בלבד.
 - JSON: enums כמחרוזות (`JsonStringEnumConverter`).
+- Pipeline: ExceptionHandling → ForwardedHeaders → CorrelationId → StatusCodePages → Swagger (גם בייצור) → HttpsRedirection → Cors → Authentication → Authorization → RateLimiter → Controllers.
+- Program.cs עטוף ב-try/catch עם לוגר NLog לכשלי עלייה; `HostAbortedException` (dotnet ef) לא נחשב כשל.

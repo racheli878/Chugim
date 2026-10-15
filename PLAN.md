@@ -117,7 +117,7 @@ Chugim.sln
 - [x] **5.2** NLog: חבילה, nlog.config, חיבור ל-ILogger
 - [x] **5.3** Middleware: CorrelationId (+ לוג לכל בקשה) ו-ExceptionHandling (JSON אחיד + לוג Error)
 - [x] **5.4** JWT Authentication + Authorization עם roles + Rate limiting על /api/auth
-- [ ] **5.5** ApiControllerBase (Result → HTTP) + Controllers: Auth, Categories, Courses, Enrollments
+- [x] **5.5** ApiControllerBase (Result → HTTP) + Controllers: Auth, Categories, Courses, Enrollments
 - [ ] **5.6** Program.cs — רישום, Swagger עם כפתור Authorize, סדר pipeline נכון
 
 ### שלב 6 — בדיקות
