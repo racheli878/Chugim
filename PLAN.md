@@ -105,7 +105,7 @@ Chugim.sln
 - [x] **3.5** AddApplication()
 
 ### שלב 4 — Infrastructure
-- [ ] **4.1** AppDbContext + Configurations ב-Fluent API (many-to-many, אינדקס ייחודי, concurrency token) + דריסת SaveChangesAsync
+- [x] **4.1** AppDbContext + Configurations ב-Fluent API (many-to-many, אינדקס ייחודי, concurrency token) + דריסת SaveChangesAsync
 - [ ] **4.2** Repositories + UnitOfWork + ToPagedResultAsync (AsNoTracking בקריאות, Include/ThenInclude)
 - [ ] **4.3** PasswordHasher + JwtTokenGenerator (JwtOptions דרך IOptions)
 - [ ] **4.4** Migration ראשון: Init

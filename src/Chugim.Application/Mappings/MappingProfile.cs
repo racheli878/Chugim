@@ -26,7 +26,7 @@ public sealed class MappingProfile : Profile
             .ForMember(d => d.Category, o => o.Ignore())
             .ForMember(d => d.Enrollments, o => o.Ignore());
 
-        // CourseTitle ממולא אוטומטית מ-Course.Title.
+        // CourseTitle ו-CourseCategoryName ממולאים אוטומטית מ-Course.Title ו-Course.Category.Name.
         CreateMap<Enrollment, EnrollmentResponse>()
             .ForMember(d => d.ParticipantName, o => o.MapFrom(s => s.User.FullName));
 
