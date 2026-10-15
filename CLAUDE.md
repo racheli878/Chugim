@@ -71,3 +71,5 @@ tests/Chugim.Tests                                                     → Appli
 - בפיתוח: לוג Debug ל-namespace ‏Chugim, ו-SQL של EF ברמת Information (לבדיקת pagination ו-N+1).
 - NLog: ‏`nlog.config` = יעדים ופורמט בלבד (מסוף + קובץ יומי `logs/chugim-yyyy-MM-dd.log`); רמות ב-appsettings (`RemoveLoggerFactoryFilter = false`). שורה: זמן | רמה | CorrelationId | logger | הודעה.
 - רמות: Debug לפיתוח, Information לזרימה רגילה, Warning לחריג שטופל (התנגשות, התחברות שנכשלה), Error לכשל. אף פעם לא סיסמאות, tokens או תוכן הרשמה.
+- Middleware (API/Middleware): ‏ExceptionHandling ראשון (חריגה לא צפויה → Error ללוג + 500 ProblemDetails), אחריו CorrelationId (header ‏`X-Correlation-ID`, ‏`HttpContext.TraceIdentifier`, log scope). שגיאות צפויות חוזרות כ-Result ולא כחריגות.
+- כל תשובת שגיאה בפורמט ProblemDetails עם `correlationId` (AddProblemDetails + CustomizeProblemDetails).

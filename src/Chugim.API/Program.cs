@@ -1,3 +1,4 @@
+using Chugim.API.Middleware;
 using Chugim.Application;
 using Chugim.Infrastructure;
 using NLog.Web;
@@ -12,6 +13,12 @@ builder.Host.UseNLog(new NLogAspNetCoreOptions { RemoveLoggerFactoryFilter = fal
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
+// פורמט שגיאה אחיד (ProblemDetails) לכל התשובות — 400, 401, 403, 404, 409, 500 —
+// וכל אחת כוללת את מזהה הבקשה.
+builder.Services.AddProblemDetails(options =>
+    options.CustomizeProblemDetails = ctx =>
+        ctx.ProblemDetails.Extensions["correlationId"] = ctx.HttpContext.TraceIdentifier);
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,6 +26,10 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
 await app.Services.InitializeDatabaseAsync();
+
+// סדר ה-pipeline: טיפול בשגיאות ראשון, כדי לעטוף את כל מה שאחריו.
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<CorrelationIdMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
