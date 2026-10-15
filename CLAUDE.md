@@ -56,3 +56,6 @@ tests/Chugim.Tests                                                     → Appli
 - עדכון/מחיקת חוג: התנגשות concurrency → 409 בלי ניסיון חוזר (המנהלת תנסה שוב).
 - הרשמה וביטול: ניסיון חוזר דרך `RetryOnConflictAsync` (עד 3) — כל ניסיון קורא מחדש, בודק ושומר.
 - הודעות שגיאה קבועות מרוכזות ב-`Application/Common/AppErrors`.
+- EF: ‏enums נשמרים כמחרוזות (`HasConversion<string>`). ‏Check constraints על Courses (Capacity ≥ 1, ‏0 ≤ EnrolledCount ≤ Capacity). אינדקס ייחודי חלקי על Enrollments (UserId, CourseId) WHERE Status = 'Active'.
+- ‏Version מוחלף ב-`AppDbContext.SaveChanges/SaveChangesAsync` לכל Course במצב Modified.
+- חבילות EF בגרסה 8.0.11 בכל הפרויקטים (Npgsql, Design, Sqlite) — חייבות להתאים זו לזו.

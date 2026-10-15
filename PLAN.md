@@ -102,7 +102,7 @@ Chugim.sln
 - [x] **3.2** AuthService
 - [x] **3.3** CourseService + CategoryService — CRUD, סינון, מיון, pagination
 - [x] **3.4** EnrollmentService — הרשמה עם טיפול בתחרות וניסיון חוזר, ביטול, שליפה לפי הרשאה
-- [ ] **3.5** AddApplication()
+- [x] **3.5** AddApplication()
 
 ### שלב 4 — Infrastructure
 - [ ] **4.1** AppDbContext + Configurations ב-Fluent API (many-to-many, אינדקס ייחודי, concurrency token) + דריסת SaveChangesAsync
