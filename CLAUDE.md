@@ -75,3 +75,6 @@ tests/Chugim.Tests                                                     → Appli
 - כל תשובת שגיאה בפורמט ProblemDetails עם `correlationId` (AddProblemDetails + CustomizeProblemDetails).
 - Auth ב-API: ‏`AddJwtAuthentication` (מאמת לפי אותו JwtOptions), ‏`Roles.Admin` / `Roles.Participant` ל-[Authorize], ‏`User.ToCurrentUser()` בונה CurrentUser מה-claims. ‏Rate limit ‏`RateLimitPolicies.Auth`: 5 לדקה ל-IP (ב-Render צריך ForwardedHeaders כדי לקבל IP אמיתי).
 - Program.cs משתמש במתודות הרחבה (API/Extensions) — נשאר קצר וקריא.
+- Controllers יורשים `ApiControllerBase`: ‏`FromResult` (200/204 או ProblemDetails), ‏`CreatedFromResult` (201 + Location). ‏ModelState נבדק אוטומטית ע"י [ApiController] (400 עם פירוט שדות).
+- Endpoints: ‏auth/register (201, בלי Location — אין GET למשתמשת), auth/login (200); courses — GET פתוח, POST/PUT/DELETE + `{id}/enrollments` למנהלת; enrollments — [Authorize], POST למשתתפת בלבד.
+- JSON: enums כמחרוזות (`JsonStringEnumConverter`).

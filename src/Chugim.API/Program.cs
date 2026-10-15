@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Chugim.API.Extensions;
 using Chugim.API.Middleware;
 using Chugim.Application;
@@ -23,7 +24,9 @@ builder.Services.AddProblemDetails(options =>
     options.CustomizeProblemDetails = ctx =>
         ctx.ProblemDetails.Extensions["correlationId"] = ctx.HttpContext.TraceIdentifier);
 
-builder.Services.AddControllers();
+// enums כמחרוזות ב-JSON ("Sunday", "Active", "Admin") — קריא ללקוח ויציב לשינויי סדר.
+builder.Services.AddControllers()
+    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddSwaggerWithJwt();
 
 var app = builder.Build();
