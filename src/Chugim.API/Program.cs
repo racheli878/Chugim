@@ -1,3 +1,4 @@
+using Chugim.API.Extensions;
 using Chugim.API.Middleware;
 using Chugim.Application;
 using Chugim.Infrastructure;
@@ -13,15 +14,17 @@ builder.Host.UseNLog(new NLogAspNetCoreOptions { RemoveLoggerFactoryFilter = fal
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-// פורמט שגיאה אחיד (ProblemDetails) לכל התשובות — 400, 401, 403, 404, 409, 500 —
+builder.Services.AddJwtAuthentication();
+builder.Services.AddAuthRateLimiting();
+
+// פורמט שגיאה אחיד (ProblemDetails) לכל התשובות — 400, 401, 403, 404, 409, 429, 500 —
 // וכל אחת כוללת את מזהה הבקשה.
 builder.Services.AddProblemDetails(options =>
     options.CustomizeProblemDetails = ctx =>
         ctx.ProblemDetails.Extensions["correlationId"] = ctx.HttpContext.TraceIdentifier);
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerWithJwt();
 
 var app = builder.Build();
 
@@ -31,6 +34,9 @@ await app.Services.InitializeDatabaseAsync();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<CorrelationIdMiddleware>();
 
+// תשובות ריקות (401/403/429 מה-framework) מקבלות גוף ProblemDetails.
+app.UseStatusCodePages();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -38,6 +44,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// authentication ("מי את?") חייב לבוא לפני authorization ("מה מותר לך?").
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseRateLimiter();
+
 app.MapControllers();
 
 app.Run();

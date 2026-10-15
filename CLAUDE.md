@@ -73,3 +73,5 @@ tests/Chugim.Tests                                                     → Appli
 - רמות: Debug לפיתוח, Information לזרימה רגילה, Warning לחריג שטופל (התנגשות, התחברות שנכשלה), Error לכשל. אף פעם לא סיסמאות, tokens או תוכן הרשמה.
 - Middleware (API/Middleware): ‏ExceptionHandling ראשון (חריגה לא צפויה → Error ללוג + 500 ProblemDetails), אחריו CorrelationId (header ‏`X-Correlation-ID`, ‏`HttpContext.TraceIdentifier`, log scope). שגיאות צפויות חוזרות כ-Result ולא כחריגות.
 - כל תשובת שגיאה בפורמט ProblemDetails עם `correlationId` (AddProblemDetails + CustomizeProblemDetails).
+- Auth ב-API: ‏`AddJwtAuthentication` (מאמת לפי אותו JwtOptions), ‏`Roles.Admin` / `Roles.Participant` ל-[Authorize], ‏`User.ToCurrentUser()` בונה CurrentUser מה-claims. ‏Rate limit ‏`RateLimitPolicies.Auth`: 5 לדקה ל-IP (ב-Render צריך ForwardedHeaders כדי לקבל IP אמיתי).
+- Program.cs משתמש במתודות הרחבה (API/Extensions) — נשאר קצר וקריא.
