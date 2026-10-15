@@ -110,10 +110,10 @@ Chugim.sln
 - [x] **4.3** PasswordHasher + JwtTokenGenerator (JwtOptions דרך IOptions)
 - [x] **4.6** AddInfrastructure() + החלת migrations אוטומטית בעלייה (בוצע לפני 4.4 — נדרש ל-dotnet ef)
 - [x] **4.4** Migration ראשון: Init
-- [ ] **4.5** Migration שני: Seed data (מנהלת + 2 משתתפות לדמו, קטגוריות, 5–6 חוגים — אחד מהם כמעט מלא להדגמה)
+- [x] **4.5** Migration שני: Seed data (מנהלת + 2 משתתפות לדמו, קטגוריות, 5–6 חוגים — אחד מהם כמעט מלא להדגמה)
 
 ### שלב 5 — API
-- [ ] **5.1** Configuration: appsettings.json, appsettings.Development.json, User Secrets (connection string, מפתח JWT)
+- [x] **5.1** Configuration: appsettings.json, appsettings.Development.json, User Secrets (connection string, מפתח JWT)
 - [ ] **5.2** NLog: חבילה, nlog.config, חיבור ל-ILogger
 - [ ] **5.3** Middleware: CorrelationId (+ לוג לכל בקשה) ו-ExceptionHandling (JSON אחיד + לוג Error)
 - [ ] **5.4** JWT Authentication + Authorization עם roles + Rate limiting על /api/auth

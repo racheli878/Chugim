@@ -67,3 +67,5 @@ tests/Chugim.Tests                                                     → Appli
   פקודה: `dotnet ef migrations add <Name> -p src/Chugim.Infrastructure -s src/Chugim.API -o Persistence/Migrations`
 - Seed (`Persistence/Seed/SeedData.cs`, migration SeedData): admin@chugim.dev / Admin123! (Admin); rachel@, leah@, sara@chugim.dev / Demo1234! (Participant). חוג 1 "קליגרפיה עברית" — 3 מקומות, 2 רשומות (להדגמת התחרות).
 - Seed עם Id מפורש לא מקדם את רצפי ה-identity ב-PostgreSQL — ה-migration כולל `setval` לכל טבלה.
+- Configuration: ‏appsettings.json (בסיס, נכנס ל-repo, בלי סודות) ← appsettings.Development.json (דורס בפיתוח) ← User Secrets (פיתוח) / משתני סביבה (Render: `ConnectionStrings__Default`, `Jwt__Key`, `Cors__AllowedOrigins__0`).
+- בפיתוח: לוג Debug ל-namespace ‏Chugim, ו-SQL של EF ברמת Information (לבדיקת pagination ו-N+1).
