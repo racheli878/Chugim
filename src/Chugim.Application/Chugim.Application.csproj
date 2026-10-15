@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <!-- גרסה 14 היא האחרונה ברישיון חופשי (MIT) -->
-    <PackageReference Include="AutoMapper" Version="14.0.0" />
+    <!-- גרסה 14 היא האחרונה ברישיון חופשי (MIT). האזהרה NU1903 (CVE-2026-32933) נוגעת
+         למיפוי גרפים מקוננים לעומק; כאן ממופים רק DTOs שטוחים, ולכן היא מושתקת במודע. -->
+    <PackageReference Include="AutoMapper" Version="14.0.0" NoWarn="NU1903" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
   </ItemGroup>
 
   <ItemGroup>

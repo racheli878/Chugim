@@ -98,7 +98,7 @@ Chugim.sln
 - [x] **2.3** Interfaces: Repositories, IUnitOfWork, Services, IJwtTokenGenerator, IPasswordHasher
 
 ### שלב 3 — Application (חלק ב: לוגיקה)
-- [ ] **3.1** AutoMapper Profiles
+- [x] **3.1** AutoMapper Profiles
 - [ ] **3.2** AuthService
 - [ ] **3.3** CourseService + CategoryService — CRUD, סינון, מיון, pagination
 - [ ] **3.4** EnrollmentService — הרשמה עם טיפול בתחרות וניסיון חוזר, ביטול, שליפה לפי הרשאה
