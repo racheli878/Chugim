@@ -15,6 +15,8 @@ public interface ICourseRepository
     /// <summary>ישות במעקב, לצורך שינוי ושמירה.</summary>
     Task<Course?> GetForUpdateAsync(int id, CancellationToken cancellationToken);
 
+    Task<bool> ExistsAsync(int id, CancellationToken cancellationToken);
+
     void Add(Course course);
     void Remove(Course course);
 }

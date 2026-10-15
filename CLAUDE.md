@@ -51,3 +51,8 @@ tests/Chugim.Tests                                                     → Appli
 - מחיקת חוג עם `EnrolledCount > 0` → 409 (בלי שאילתה נוספת).
 - AutoMapper: Profile יחיד `Application/Mappings/MappingProfile`. ‏`CourseRequest → Course` מתעלם מ-Capacity/EnrolledCount/Version (נקבעים רק דרך מתודות הישות). ‏User נוצר ידנית בהרשמה (נרמול מייל + hash).
 - המרת רשימה מעומדת: `PagedResult<T>.Map(...)` שומר על נתוני העימוד.
+- Auth: הודעות שגיאה כלליות (לא חושפות אם מייל רשום) + rate limiting על נקודות /api/auth (משימה 5.4).
+- מחיקת חוג מותרת רק כש-EnrolledCount == 0; הרשמות מבוטלות שלו נמחקות ב-cascade (Fluent API, משימה 4.1).
+- עדכון/מחיקת חוג: התנגשות concurrency → 409 בלי ניסיון חוזר (המנהלת תנסה שוב).
+- הרשמה וביטול: ניסיון חוזר דרך `RetryOnConflictAsync` (עד 3) — כל ניסיון קורא מחדש, בודק ושומר.
+- הודעות שגיאה קבועות מרוכזות ב-`Application/Common/AppErrors`.

@@ -37,8 +37,9 @@ public sealed class AuthService : IAuthService
     {
         var email = NormalizeEmail(request.Email);
 
+        // הודעה כללית שלא מאשרת במפורש שהמייל רשום. ניסיונות חוזרים מוגבלים ב-rate limiting (API).
         if (await _users.EmailExistsAsync(email, cancellationToken))
-            return Error.Conflict("כתובת המייל כבר רשומה במערכת.");
+            return Error.Conflict("לא ניתן להשלים את ההרשמה עם הפרטים שסופקו.");
 
         var user = new User
         {
