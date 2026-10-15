@@ -59,3 +59,5 @@ tests/Chugim.Tests                                                     → Appli
 - EF: ‏enums נשמרים כמחרוזות (`HasConversion<string>`). ‏Check constraints על Courses (Capacity ≥ 1, ‏0 ≤ EnrolledCount ≤ Capacity). אינדקס ייחודי חלקי על Enrollments (UserId, CourseId) WHERE Status = 'Active'.
 - ‏Version מוחלף ב-`AppDbContext.SaveChanges/SaveChangesAsync` לכל Course במצב Modified.
 - חבילות EF בגרסה 8.0.11 בכל הפרויקטים (Npgsql, Design, Sqlite) — חייבות להתאים זו לזו.
+- JWT: ‏`JwtOptions` (סעיף "Jwt": Issuer, Audience, Key ≥ 32 תווים, ExpiryMinutes) ב-Infrastructure/Security. ‏Claims: NameIdentifier (Id), Name, Role, Jti. ‏System.IdentityModel.Tokens.Jwt **7.1.2** (תואם JwtBearer 8 — לא לשדרג ל-8.x).
+- סיסמאות: מתאם סביב `Microsoft.AspNetCore.Identity.IPasswordHasher<User>` (מוזרק, לא new).

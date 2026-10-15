@@ -106,7 +106,7 @@ Chugim.sln
 
 ### שלב 4 — Infrastructure
 - [x] **4.1** AppDbContext + Configurations ב-Fluent API (many-to-many, אינדקס ייחודי, concurrency token) + דריסת SaveChangesAsync
-- [ ] **4.2** Repositories + UnitOfWork + ToPagedResultAsync (AsNoTracking בקריאות, Include/ThenInclude)
+- [x] **4.2** Repositories + UnitOfWork + ToPagedResultAsync (AsNoTracking בקריאות, Include/ThenInclude)
 - [ ] **4.3** PasswordHasher + JwtTokenGenerator (JwtOptions דרך IOptions)
 - [ ] **4.4** Migration ראשון: Init
 - [ ] **4.5** Migration שני: Seed data (מנהלת + 2 משתתפות לדמו, קטגוריות, 5–6 חוגים — אחד מהם כמעט מלא להדגמה)

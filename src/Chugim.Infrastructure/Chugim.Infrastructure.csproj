@@ -2,6 +2,9 @@
 
   <ItemGroup>
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="8.0.11" />
+    <!-- 7.1.2 — אותה משפחת גרסאות ש-JwtBearer 8 משתמש בה; ערבוב 7.x ו-8.x גורם לשגיאות בזמן ריצה -->
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
   </ItemGroup>
 
   <ItemGroup>
