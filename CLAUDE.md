@@ -49,3 +49,5 @@ tests/Chugim.Tests                                                     → Appli
 - אין `IEnrollmentRepository.Add` — הרשמה נוצרת דרך `Course.TryEnroll`.
 - המשתמשת המחוברת מועברת ל-services כ-`CurrentUser(Id, Role)` (נבנה ב-API מה-claims), לא דרך HttpContext.
 - מחיקת חוג עם `EnrolledCount > 0` → 409 (בלי שאילתה נוספת).
+- AutoMapper: Profile יחיד `Application/Mappings/MappingProfile`. ‏`CourseRequest → Course` מתעלם מ-Capacity/EnrolledCount/Version (נקבעים רק דרך מתודות הישות). ‏User נוצר ידנית בהרשמה (נרמול מייל + hash).
+- המרת רשימה מעומדת: `PagedResult<T>.Map(...)` שומר על נתוני העימוד.

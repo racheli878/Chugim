@@ -18,4 +18,10 @@ public sealed class PagedResult<T>
     public int TotalPages => (int)Math.Ceiling(TotalCount / (double)PageSize);
     public bool HasPreviousPage => Page > 1;
     public bool HasNextPage => Page < TotalPages;
+
+    /// <summary>
+    /// ממיר את הפריטים ושומר על נתוני העימוד, למשל: <c>paged.Map(c => _mapper.Map&lt;CourseResponse&gt;(c))</c>.
+    /// </summary>
+    public PagedResult<TOut> Map<TOut>(Func<T, TOut> selector) =>
+        new(Items.Select(selector).ToList(), Page, PageSize, TotalCount);
 }

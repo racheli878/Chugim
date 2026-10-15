@@ -1,6 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <!-- גרסה 14 היא האחרונה ברישיון חופשי (MIT) -->
+    <PackageReference Include="AutoMapper" Version="14.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Chugim.Domain\Chugim.Domain.csproj" />
   </ItemGroup>
 

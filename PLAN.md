@@ -95,7 +95,7 @@ Chugim.sln
 ### שלב 2 — Application (חלק א: חוזים)
 - [x] **2.1** Common: Result&lt;T&gt;, ErrorType, PagedResult&lt;T&gt;, PaginationQuery, ConcurrencyConflictException
 - [x] **2.2** DTOs ל-request (עם Data Annotations) ול-response
-- [ ] **2.3** Interfaces: Repositories, IUnitOfWork, Services, IJwtTokenGenerator, IPasswordHasher
+- [x] **2.3** Interfaces: Repositories, IUnitOfWork, Services, IJwtTokenGenerator, IPasswordHasher
 
 ### שלב 3 — Application (חלק ב: לוגיקה)
 - [ ] **3.1** AutoMapper Profiles
