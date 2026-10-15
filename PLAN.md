@@ -90,10 +90,10 @@ Chugim.sln
 - [x] **0.1** יצירת solution, 5 פרויקטים בתיקיות src/tests, הפניות לפי כיוון התלויות, .gitignore, git init
 
 ### שלב 1 — Domain
-- [ ] **1.1** Entities + Enums + חוקי Course (Enroll / ReleaseSpot / ChangeCapacity)
+- [x] **1.1** Entities + Enums + חוקי Course (Enroll / ReleaseSpot / ChangeCapacity)
 
 ### שלב 2 — Application (חלק א: חוזים)
-- [ ] **2.1** Common: Result&lt;T&gt;, ErrorType, PagedResult&lt;T&gt;, PaginationQuery, ConcurrencyConflictException
+- [x] **2.1** Common: Result&lt;T&gt;, ErrorType, PagedResult&lt;T&gt;, PaginationQuery, ConcurrencyConflictException
 - [ ] **2.2** DTOs ל-request (עם Data Annotations) ול-response
 - [ ] **2.3** Interfaces: Repositories, IUnitOfWork, Services, IJwtTokenGenerator, IPasswordHasher
 
