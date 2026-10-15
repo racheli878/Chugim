@@ -101,7 +101,7 @@ Chugim.sln
 - [x] **3.1** AutoMapper Profiles
 - [x] **3.2** AuthService
 - [x] **3.3** CourseService + CategoryService — CRUD, סינון, מיון, pagination
-- [ ] **3.4** EnrollmentService — הרשמה עם טיפול בתחרות וניסיון חוזר, ביטול, שליפה לפי הרשאה
+- [x] **3.4** EnrollmentService — הרשמה עם טיפול בתחרות וניסיון חוזר, ביטול, שליפה לפי הרשאה
 - [ ] **3.5** AddApplication()
 
 ### שלב 4 — Infrastructure
