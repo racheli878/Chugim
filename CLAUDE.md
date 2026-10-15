@@ -69,3 +69,5 @@ tests/Chugim.Tests                                                     → Appli
 - Seed עם Id מפורש לא מקדם את רצפי ה-identity ב-PostgreSQL — ה-migration כולל `setval` לכל טבלה.
 - Configuration: ‏appsettings.json (בסיס, נכנס ל-repo, בלי סודות) ← appsettings.Development.json (דורס בפיתוח) ← User Secrets (פיתוח) / משתני סביבה (Render: `ConnectionStrings__Default`, `Jwt__Key`, `Cors__AllowedOrigins__0`).
 - בפיתוח: לוג Debug ל-namespace ‏Chugim, ו-SQL של EF ברמת Information (לבדיקת pagination ו-N+1).
+- NLog: ‏`nlog.config` = יעדים ופורמט בלבד (מסוף + קובץ יומי `logs/chugim-yyyy-MM-dd.log`); רמות ב-appsettings (`RemoveLoggerFactoryFilter = false`). שורה: זמן | רמה | CorrelationId | logger | הודעה.
+- רמות: Debug לפיתוח, Information לזרימה רגילה, Warning לחריג שטופל (התנגשות, התחברות שנכשלה), Error לכשל. אף פעם לא סיסמאות, tokens או תוכן הרשמה.
