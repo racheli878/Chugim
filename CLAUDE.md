@@ -61,3 +61,7 @@ tests/Chugim.Tests                                                     → Appli
 - חבילות EF בגרסה 8.0.11 בכל הפרויקטים (Npgsql, Design, Sqlite) — חייבות להתאים זו לזו.
 - JWT: ‏`JwtOptions` (סעיף "Jwt": Issuer, Audience, Key ≥ 32 תווים, ExpiryMinutes) ב-Infrastructure/Security. ‏Claims: NameIdentifier (Id), Name, Role, Jti. ‏System.IdentityModel.Tokens.Jwt **7.1.2** (תואם JwtBearer 8 — לא לשדרג ל-8.x).
 - סיסמאות: מתאם סביב `Microsoft.AspNetCore.Identity.IPasswordHasher<User>` (מוזרק, לא new).
+- סודות (User Secrets, ‏UserSecretsId ב-Chugim.API.csproj): `ConnectionStrings:Default`, `Jwt:Key`. ‏appsettings.json מכיל רק Jwt:Issuer/Audience/ExpiryMinutes.
+- פיתוח: PostgreSQL 17 ב-Docker (container `postgres-dev`, DB `appdb`, port 5432).
+- Migrations ב-`Infrastructure/Persistence/Migrations`; מוחלים אוטומטית בעלייה (`InitializeDatabaseAsync`).
+  פקודה: `dotnet ef migrations add <Name> -p src/Chugim.Infrastructure -s src/Chugim.API -o Persistence/Migrations`
