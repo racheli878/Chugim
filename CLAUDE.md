@@ -34,7 +34,8 @@ tests/Chugim.Tests                                                     → Appli
 - ישויות: User, Category, Course, Enrollment. ‏Enrollment היא ישות הביניים של הקשר רבים-לרבים User ↔ Course.
 - Course מחזיק `EnrolledCount` (עם `private set`) — כדי שכל הרשמה תעדכן את שורת החוג ותתנגש עליה.
   ספירת Enrollments ואז INSERT לא ניתנת להגנה ב-optimistic concurrency.
-- חוקי המקומות בתוך Course: `TryEnroll()`, `ReleaseSpot()`, `TryChangeCapacity()`. ‏`AvailableSpots` מחושב, לא נשמר.
+- חוקי המקומות בתוך Course: `TryEnroll(userId, nowUtc, out enrollment)` (מגדיל מונה **ויוצר** Enrollment יחד), `ReleaseSpot()`, `TryChangeCapacity()` (משמש גם ביצירת חוג). ‏`Capacity`, `EnrolledCount`, `Version` עם `private set`. ‏`AvailableSpots`, `IsFull` מחושבים, לא נשמרים.
+- `Enrollment.TryCancel()` מבטל **ומשחרר מקום** בחוג — דורש טעינת Course (Include).
 - Concurrency token: ‏`Guid Version` על Course, מוגדר ב-Fluent API (`IsConcurrencyToken`), ומוחלף אוטומטית בדריסת `SaveChangesAsync`.
 - UnitOfWork (Infrastructure) מתרגם `DbUpdateConcurrencyException` ל-`ConcurrencyConflictException` (Application).
 - EnrollmentService: בהתנגשות — לוג Warning וניסיון חוזר עד 3 פעמים עם קריאה טרייה; חוג מלא → 409 "החוג מלא"; התנגשות מתמשכת → 409 "נסי שוב".
