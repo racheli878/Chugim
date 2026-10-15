@@ -44,3 +44,8 @@ tests/Chugim.Tests                                                     → Appli
 - Pagination דרך מתודת הרחבה אחת `ToPagedResultAsync` (Skip/Take בתוך השאילתה).
 - Roles: ‏Participant, Admin.
 - טיפוסים: `DayOfWeek`, `TimeOnly StartTime`, `DateOnly StartDate`, `decimal Price`, `DateTime EnrolledAtUtc`.
+- חוזים לתשתית (repositories, UnitOfWork, hasher, JWT) ב-`Application/Interfaces`; ממשקי services ליד המימושים ב-`Application/Services`.
+- Repositories מחזירים ישויות: `GetByIdAsync` = קריאה בלבד (AsNoTracking), `GetForUpdateAsync` = ישות במעקב. ההמרה ל-DTO ב-service.
+- אין `IEnrollmentRepository.Add` — הרשמה נוצרת דרך `Course.TryEnroll`.
+- המשתמשת המחוברת מועברת ל-services כ-`CurrentUser(Id, Role)` (נבנה ב-API מה-claims), לא דרך HttpContext.
+- מחיקת חוג עם `EnrolledCount > 0` → 409 (בלי שאילתה נוספת).
