@@ -1,4 +1,5 @@
 using Chugim.Domain.Entities;
+using Chugim.Infrastructure.Persistence.Seed;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chugim.Infrastructure.Persistence;
@@ -14,9 +15,12 @@ public sealed class AppDbContext : DbContext
     public DbSet<Course> Courses => Set<Course>();
     public DbSet<Enrollment> Enrollments => Set<Enrollment>();
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder) =>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
         // טוען את כל מחלקות IEntityTypeConfiguration מהפרויקט.
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        SeedData.Apply(modelBuilder);
+    }
 
     public override int SaveChanges(bool acceptAllChangesOnSuccess)
     {

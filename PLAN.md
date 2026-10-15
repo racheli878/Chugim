@@ -108,8 +108,8 @@ Chugim.sln
 - [x] **4.1** AppDbContext + Configurations ב-Fluent API (many-to-many, אינדקס ייחודי, concurrency token) + דריסת SaveChangesAsync
 - [x] **4.2** Repositories + UnitOfWork + ToPagedResultAsync (AsNoTracking בקריאות, Include/ThenInclude)
 - [x] **4.3** PasswordHasher + JwtTokenGenerator (JwtOptions דרך IOptions)
-- [ ] **4.6** AddInfrastructure() + החלת migrations אוטומטית בעלייה (בוצע לפני 4.4 — נדרש ל-dotnet ef)
-- [ ] **4.4** Migration ראשון: Init
+- [x] **4.6** AddInfrastructure() + החלת migrations אוטומטית בעלייה (בוצע לפני 4.4 — נדרש ל-dotnet ef)
+- [x] **4.4** Migration ראשון: Init
 - [ ] **4.5** Migration שני: Seed data (מנהלת + 2 משתתפות לדמו, קטגוריות, 5–6 חוגים — אחד מהם כמעט מלא להדגמה)
 
 ### שלב 5 — API

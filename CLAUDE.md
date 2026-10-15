@@ -65,3 +65,5 @@ tests/Chugim.Tests                                                     → Appli
 - פיתוח: PostgreSQL 17 ב-Docker (container `postgres-dev`, DB `appdb`, port 5432).
 - Migrations ב-`Infrastructure/Persistence/Migrations`; מוחלים אוטומטית בעלייה (`InitializeDatabaseAsync`).
   פקודה: `dotnet ef migrations add <Name> -p src/Chugim.Infrastructure -s src/Chugim.API -o Persistence/Migrations`
+- Seed (`Persistence/Seed/SeedData.cs`, migration SeedData): admin@chugim.dev / Admin123! (Admin); rachel@, leah@, sara@chugim.dev / Demo1234! (Participant). חוג 1 "קליגרפיה עברית" — 3 מקומות, 2 רשומות (להדגמת התחרות).
+- Seed עם Id מפורש לא מקדם את רצפי ה-identity ב-PostgreSQL — ה-migration כולל `setval` לכל טבלה.

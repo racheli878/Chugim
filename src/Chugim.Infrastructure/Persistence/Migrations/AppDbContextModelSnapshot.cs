@@ -41,6 +41,28 @@ namespace Chugim.Infrastructure.Persistence.Migrations
                         .IsUnique();
 
                     b.ToTable("Categories", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "אומנות"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "מחשבים"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "בישול"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "תפירה"
+                        });
                 });
 
             modelBuilder.Entity("Chugim.Domain.Entities.Course", b =>
@@ -109,6 +131,104 @@ namespace Chugim.Infrastructure.Persistence.Migrations
 
                             t.HasCheckConstraint("CK_Courses_EnrolledCount", "\"EnrolledCount\" >= 0 AND \"EnrolledCount\" <= \"Capacity\"");
                         });
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Capacity = 3,
+                            CategoryId = 1,
+                            DayOfWeek = "Sunday",
+                            Description = "כתיבה אומנותית בעט ובמכחול.",
+                            EnrolledCount = 2,
+                            InstructorName = "חנה ברגר",
+                            Location = "חדר 3",
+                            Price = 180m,
+                            StartDate = new DateOnly(2026, 11, 1),
+                            StartTime = new TimeOnly(16, 30, 0),
+                            Title = "קליגרפיה עברית",
+                            Version = new Guid("6d1f0c52-3b8e-4f8a-9a52-1a7d3c9e4b01")
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Capacity = 12,
+                            CategoryId = 1,
+                            DayOfWeek = "Tuesday",
+                            Description = "טכניקות בסיס, נופים וטבע דומם.",
+                            EnrolledCount = 1,
+                            InstructorName = "מרים שטרן",
+                            Location = "חדר 3",
+                            Price = 220m,
+                            StartDate = new DateOnly(2026, 11, 3),
+                            StartTime = new TimeOnly(17, 0, 0),
+                            Title = "ציור בצבעי מים",
+                            Version = new Guid("2a7b9e14-5c3d-4e6f-8a91-0b2c4d6e8f02")
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Capacity = 15,
+                            CategoryId = 2,
+                            DayOfWeek = "Monday",
+                            Description = "יסודות התכנות בסביבה ידידותית.",
+                            EnrolledCount = 0,
+                            InstructorName = "אסתר כץ",
+                            Location = "מעבדת מחשבים",
+                            Price = 250m,
+                            StartDate = new DateOnly(2026, 11, 2),
+                            StartTime = new TimeOnly(15, 0, 0),
+                            Title = "תכנות לנערות — צעדים ראשונים",
+                            Version = new Guid("9c4e2f61-7a8b-4c3d-9e1f-2a3b4c5d6e03")
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Capacity = 10,
+                            CategoryId = 2,
+                            DayOfWeek = "Wednesday",
+                            Description = "עבודה עם כלי עיצוב והכנת הזמנות ופוסטרים.",
+                            EnrolledCount = 0,
+                            InstructorName = "דבורה פרידמן",
+                            Location = "מעבדת מחשבים",
+                            Price = 260m,
+                            StartDate = new DateOnly(2026, 11, 4),
+                            StartTime = new TimeOnly(16, 0, 0),
+                            Title = "עיצוב גרפי",
+                            Version = new Guid("4b8d1e73-9f2a-4b5c-8d6e-3c4d5e6f7a04")
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Capacity = 8,
+                            CategoryId = 3,
+                            DayOfWeek = "Thursday",
+                            Description = "לחמים, עוגות ועוגיות.",
+                            EnrolledCount = 0,
+                            InstructorName = "יהודית אורן",
+                            Location = "המטבח",
+                            Price = 200m,
+                            StartDate = new DateOnly(2026, 11, 5),
+                            StartTime = new TimeOnly(16, 30, 0),
+                            Title = "אפייה ביתית",
+                            Version = new Guid("7e2a5c84-1b3d-4e6f-9a8b-4d5e6f7a8b05")
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Capacity = 10,
+                            CategoryId = 4,
+                            DayOfWeek = "Sunday",
+                            Description = "הכרת מכונת התפירה ותפירת פריטים פשוטים.",
+                            EnrolledCount = 0,
+                            InstructorName = "רבקה גולד",
+                            Location = "חדר 5",
+                            Price = 230m,
+                            StartDate = new DateOnly(2026, 11, 8),
+                            StartTime = new TimeOnly(18, 0, 0),
+                            Title = "תפירה למתחילות",
+                            Version = new Guid("1f6c3d95-2e4a-4b7c-8d9e-5e6f7a8b9c06")
+                        });
                 });
 
             modelBuilder.Entity("Chugim.Domain.Entities.Enrollment", b =>
@@ -142,6 +262,32 @@ namespace Chugim.Infrastructure.Persistence.Migrations
                         .HasFilter("\"Status\" = 'Active'");
 
                     b.ToTable("Enrollments", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CourseId = 1,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CourseId = 1,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CourseId = 2,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 2
+                        });
                 });
 
             modelBuilder.Entity("Chugim.Domain.Entities.User", b =>
@@ -178,6 +324,40 @@ namespace Chugim.Infrastructure.Persistence.Migrations
                         .IsUnique();
 
                     b.ToTable("Users", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "admin@chugim.dev",
+                            FullName = "מנהלת החוגים",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB2H1qcwWTIgMrWnBxGcjJdltEiL9giwNQ+0pbkMa1WcBNnXcpcRSlOWaRaqt3ZDHQ==",
+                            Role = "Admin"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "rachel@chugim.dev",
+                            FullName = "רחל כהן",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM+VyVetoyFclqPM4dO1/O7ggNB/Ry926RGQrmVSdTOYAHemBfI6JD7zefuXL8R2CQ==",
+                            Role = "Participant"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "leah@chugim.dev",
+                            FullName = "לאה לוי",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM+VyVetoyFclqPM4dO1/O7ggNB/Ry926RGQrmVSdTOYAHemBfI6JD7zefuXL8R2CQ==",
+                            Role = "Participant"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "sara@chugim.dev",
+                            FullName = "שרה מזרחי",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM+VyVetoyFclqPM4dO1/O7ggNB/Ry926RGQrmVSdTOYAHemBfI6JD7zefuXL8R2CQ==",
+                            Role = "Participant"
+                        });
                 });
 
             modelBuilder.Entity("Chugim.Domain.Entities.Course", b =>
