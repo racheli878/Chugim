@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{112243CB-283A-4998-AC73-AEFA5F820890}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{75E7FC6D-52F0-4833-9FB9-C3AFC7A93747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chugim.Domain", "src\Chugim.Domain\Chugim.Domain.csproj", "{1907AC03-4BEB-4208-9658-0BA196DD281A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chugim.Application", "src\Chugim.Application\Chugim.Application.csproj", "{2954D752-6965-4268-A966-E06E1D24CECF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chugim.Infrastructure", "src\Chugim.Infrastructure\Chugim.Infrastructure.csproj", "{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chugim.API", "src\Chugim.API\Chugim.API.csproj", "{4A31A724-0442-4AA7-95A4-0C33AD75D65A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chugim.Tests", "tests\Chugim.Tests\Chugim.Tests.csproj", "{C72AD4C8-A878-4E08-AF0B-62D88806EF33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1907AC03-4BEB-4208-9658-0BA196DD281A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1907AC03-4BEB-4208-9658-0BA196DD281A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1907AC03-4BEB-4208-9658-0BA196DD281A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1907AC03-4BEB-4208-9658-0BA196DD281A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2954D752-6965-4268-A966-E06E1D24CECF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2954D752-6965-4268-A966-E06E1D24CECF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2954D752-6965-4268-A966-E06E1D24CECF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2954D752-6965-4268-A966-E06E1D24CECF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A31A724-0442-4AA7-95A4-0C33AD75D65A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A31A724-0442-4AA7-95A4-0C33AD75D65A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A31A724-0442-4AA7-95A4-0C33AD75D65A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A31A724-0442-4AA7-95A4-0C33AD75D65A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72AD4C8-A878-4E08-AF0B-62D88806EF33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72AD4C8-A878-4E08-AF0B-62D88806EF33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72AD4C8-A878-4E08-AF0B-62D88806EF33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72AD4C8-A878-4E08-AF0B-62D88806EF33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1907AC03-4BEB-4208-9658-0BA196DD281A} = {112243CB-283A-4998-AC73-AEFA5F820890}
+		{2954D752-6965-4268-A966-E06E1D24CECF} = {112243CB-283A-4998-AC73-AEFA5F820890}
+		{2B20EDD3-E3F2-477D-96C0-2E55C0DA6C64} = {112243CB-283A-4998-AC73-AEFA5F820890}
+		{4A31A724-0442-4AA7-95A4-0C33AD75D65A} = {112243CB-283A-4998-AC73-AEFA5F820890}
+		{C72AD4C8-A878-4E08-AF0B-62D88806EF33} = {75E7FC6D-52F0-4833-9FB9-C3AFC7A93747}
+	EndGlobalSection
+EndGlobal

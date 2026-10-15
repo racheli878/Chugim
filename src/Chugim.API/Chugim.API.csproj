@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Chugim.Application\Chugim.Application.csproj" />
+    <!-- Infrastructure מוכר כאן רק לצורך רישום השירותים ב-Program.cs -->
+    <ProjectReference Include="..\Chugim.Infrastructure\Chugim.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

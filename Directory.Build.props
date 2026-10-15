@@ -1,0 +1,8 @@
+<Project>
+  <!-- הגדרות משותפות לכל הפרויקטים ב-solution. כל csproj יורש אותן אוטומטית. -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+</Project>

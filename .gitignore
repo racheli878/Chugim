@@ -1,0 +1,42 @@
+## .NET build output
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+artifacts/
+
+## Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+## Tests
+[Tt]est[Rr]esults/
+coverage*.json
+coverage*.xml
+*.coverage
+
+## NuGet
+*.nupkg
+packages/
+project.lock.json
+
+## Logs (NLog)
+logs/
+*.log
+
+## Secrets — never commit
+*.pfx
+.env
+appsettings.*.local.json
+
+## OS
+Thumbs.db
+.DS_Store
