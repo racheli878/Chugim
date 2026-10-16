@@ -80,3 +80,5 @@ tests/Chugim.Tests                                                     → Appli
 - JSON: enums כמחרוזות (`JsonStringEnumConverter`).
 - Pipeline: ExceptionHandling → ForwardedHeaders → CorrelationId → StatusCodePages → Swagger (גם בייצור) → HttpsRedirection → Cors → Authentication → Authorization → RateLimiter → Controllers.
 - Program.cs עטוף ב-try/catch עם לוגר NLog לכשלי עלייה; `HostAbortedException` (dotnet ef) לא נחשב כשל.
+- בדיקות: `tests/Chugim.Tests/{Domain,Application,Infrastructure}`. שמות: `Method_Scenario_Expected`. ‏Domain בלי Moq ובלי מסד.
+- `Course.TryEnroll` קובע גם `enrollment.Course = this` (נמצא בבדיקות — בלעדיו TryCancel נכשל על הרשמה חדשה בזיכרון).

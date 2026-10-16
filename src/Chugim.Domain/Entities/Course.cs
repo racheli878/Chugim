@@ -39,7 +39,7 @@ public class Course
             return false;
 
         EnrolledCount++;
-        enrollment = new Enrollment { UserId = userId, EnrolledAtUtc = enrolledAtUtc };
+        enrollment = new Enrollment { UserId = userId, EnrolledAtUtc = enrolledAtUtc, Course = this };
         Enrollments.Add(enrollment);
         return true;
     }
