@@ -17,6 +17,9 @@ public static class DependencyInjection
         services.AddScoped<ICourseService, CourseService>();
         services.AddScoped<IEnrollmentService, EnrollmentService>();
 
+        // שעון המערכת דרך TimeProvider (מובנה ב-.NET 8) — כך הבדיקות יכולות לקבוע "היום" בעצמן.
+        services.AddSingleton(TimeProvider.System);
+
         // סורק את ה-assembly ומוצא את כל ה-Profiles (כרגע MappingProfile).
         services.AddAutoMapper(typeof(MappingProfile).Assembly);
 

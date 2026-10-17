@@ -13,6 +13,7 @@ public sealed class CourseService : ICourseService
     private readonly ICategoryRepository _categories;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
+    private readonly TimeProvider _time;
     private readonly ILogger<CourseService> _logger;
 
     public CourseService(
@@ -20,14 +21,18 @@ public sealed class CourseService : ICourseService
         ICategoryRepository categories,
         IUnitOfWork unitOfWork,
         IMapper mapper,
+        TimeProvider time,
         ILogger<CourseService> logger)
     {
         _courses = courses;
         _categories = categories;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
+        _time = time;
         _logger = logger;
     }
+
+    private DateOnly Today => DateOnly.FromDateTime(_time.GetLocalNow().DateTime);
 
     public async Task<PagedResult<CourseResponse>> GetPagedAsync(CourseQuery query, CancellationToken cancellationToken)
     {
@@ -46,6 +51,9 @@ public sealed class CourseService : ICourseService
 
     public async Task<Result<CourseResponse>> CreateAsync(CourseRequest request, CancellationToken cancellationToken)
     {
+        if (request.StartDate < Today)
+            return AppErrors.StartDateInPast;
+
         if (!await _categories.ExistsAsync(request.CategoryId, cancellationToken))
             return AppErrors.CategoryNotFound;
 
@@ -67,6 +75,10 @@ public sealed class CourseService : ICourseService
         var course = await _courses.GetForUpdateAsync(id, cancellationToken);
         if (course is null)
             return AppErrors.CourseNotFound;
+
+        // חוג שכבר התחיל אפשר לערוך בלי לגעת בתאריך; רק תאריך *חדש* חייב להיות היום או בעתיד.
+        if (request.StartDate != course.StartDate && request.StartDate < Today)
+            return AppErrors.StartDateInPast;
 
         if (course.CategoryId != request.CategoryId &&
             !await _categories.ExistsAsync(request.CategoryId, cancellationToken))
