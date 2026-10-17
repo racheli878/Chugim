@@ -5,6 +5,8 @@ public static class AppErrors
 {
     public static readonly Error CourseNotFound = Error.NotFound("החוג לא נמצא.");
     public static readonly Error CategoryNotFound = Error.Validation("הקטגוריה שנבחרה אינה קיימת.");
+    public static readonly Error CategoryDoesNotExist = Error.NotFound("הקטגוריה לא נמצאה.");
+    public static readonly Error CategoryNameTaken = Error.Conflict("כבר קיימת קטגוריה בשם הזה.");
     public static readonly Error InvalidCapacity = Error.Validation("מספר המקומות חייב להיות לפחות 1.");
     public static readonly Error CourseHasParticipants = Error.Conflict("לא ניתן למחוק חוג שיש בו משתתפות רשומות.");
     public static readonly Error CourseModifiedConcurrently =

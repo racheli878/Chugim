@@ -83,3 +83,5 @@ tests/Chugim.Tests                                                     → Appli
 - בדיקות: `tests/Chugim.Tests/{Domain,Application,Infrastructure}`. שמות: `Method_Scenario_Expected`. ‏Domain בלי Moq ובלי מסד.
 - `Course.TryEnroll` קובע גם `enrollment.Course = this` (נמצא בבדיקות — בלעדיו TryCancel נכשל על הרשמה חדשה בזיכרון).
 - בדיקות Infrastructure: ‏`SqliteTestDatabase` — SQLite בזיכרון עם אותו AppDbContext (EnsureCreated כולל seed). ‏ConcurrencyTests = בדיקת ההוכחה הנדרשת (שני DbContext).
+- קטגוריות: מנהלת יכולה להוסיף (POST /api/categories, 409 על שם קיים). צבע הקטגוריה לא נשמר במסד — הלקוח גוזר אותו מה-Id מתוך פלטה קבועה של 8 גוונים.
+- לקוח: React 18 + Vite + React Router, JavaScript, CSS ידני עם משתני עיצוב (בלי ספריית UI). תיקייה ו-repo נפרדים: `chugim-client`. עיצוב: שורת מושבים בכל כרטיס; צבעים דיו #1E2340, נייר #F6F7FB, שזיף #7A2E5C, זעפרן #F2B33D, מרווה #4E8F72, לבנה #C2412D; גופנים Suez One (כותרות) + Assistant.

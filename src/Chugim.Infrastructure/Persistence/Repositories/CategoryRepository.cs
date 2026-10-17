@@ -13,6 +13,14 @@ public sealed class CategoryRepository : ICategoryRepository
     public async Task<IReadOnlyList<Category>> GetAllAsync(CancellationToken cancellationToken) =>
         await _db.Categories.AsNoTracking().OrderBy(c => c.Name).ToListAsync(cancellationToken);
 
+    public Task<Category?> GetByIdAsync(int id, CancellationToken cancellationToken) =>
+        _db.Categories.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id, cancellationToken);
+
     public Task<bool> ExistsAsync(int id, CancellationToken cancellationToken) =>
         _db.Categories.AnyAsync(c => c.Id == id, cancellationToken);
+
+    public Task<bool> NameExistsAsync(string name, CancellationToken cancellationToken) =>
+        _db.Categories.AnyAsync(c => c.Name == name, cancellationToken);
+
+    public void Add(Category category) => _db.Categories.Add(category);
 }
