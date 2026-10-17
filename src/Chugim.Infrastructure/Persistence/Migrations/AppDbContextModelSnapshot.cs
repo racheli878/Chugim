@@ -228,6 +228,102 @@ namespace Chugim.Infrastructure.Persistence.Migrations
                             StartTime = new TimeOnly(18, 0, 0),
                             Title = "תפירה למתחילות",
                             Version = new Guid("1f6c3d95-2e4a-4b7c-8d9e-5e6f7a8b9c06")
+                        },
+                        new
+                        {
+                            Id = 101,
+                            Capacity = 2,
+                            CategoryId = 4,
+                            DayOfWeek = "Monday",
+                            Description = "סריגה במסרגות, רקמת צלב ופריטים קטנים למתנה.",
+                            EnrolledCount = 1,
+                            InstructorName = "שולמית הלפרין",
+                            Location = "חדר 5",
+                            Price = 190m,
+                            StartDate = new DateOnly(2026, 11, 9),
+                            StartTime = new TimeOnly(17, 30, 0),
+                            Title = "סריגה ורקמה",
+                            Version = new Guid("a3c5e7f9-1b2d-4f6a-8c0e-2d4f6a8c0e11")
+                        },
+                        new
+                        {
+                            Id = 102,
+                            Capacity = 2,
+                            CategoryId = 1,
+                            DayOfWeek = "Wednesday",
+                            Description = "עבודה בידיים, צורות בסיס וקלייה של פריט אישי.",
+                            EnrolledCount = 1,
+                            InstructorName = "נעמי רוזן",
+                            Location = "חדר 3",
+                            Price = 240m,
+                            StartDate = new DateOnly(2026, 11, 11),
+                            StartTime = new TimeOnly(15, 30, 0),
+                            Title = "פיסול בחימר",
+                            Version = new Guid("b4d6f8a0-2c3e-4a7b-9d1f-3e5a7b9d1f12")
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Capacity = 6,
+                            CategoryId = 3,
+                            DayOfWeek = "Tuesday",
+                            Description = "קרם, בצק סוכר ועיצובים צבעוניים.",
+                            EnrolledCount = 0,
+                            InstructorName = "יהודית אורן",
+                            Location = "המטבח",
+                            Price = 210m,
+                            StartDate = new DateOnly(2026, 11, 10),
+                            StartTime = new TimeOnly(16, 0, 0),
+                            Title = "קישוט עוגות",
+                            Version = new Guid("c5e7a9b1-3d4f-4b8c-8e2a-4f6b8c0e2a13")
+                        },
+                        new
+                        {
+                            Id = 104,
+                            Capacity = 12,
+                            CategoryId = 2,
+                            DayOfWeek = "Thursday",
+                            Description = "הקלדה מהירה בעברית ובאנגלית, בלי להסתכל על המקלדת.",
+                            EnrolledCount = 0,
+                            InstructorName = "אסתר כץ",
+                            Location = "מעבדת מחשבים",
+                            Price = 150m,
+                            StartDate = new DateOnly(2026, 11, 12),
+                            StartTime = new TimeOnly(15, 0, 0),
+                            Title = "הקלדה עיוורת",
+                            Version = new Guid("d6f8b0c2-4e5a-4c9d-9f3b-5a7c9d1f3b14")
+                        },
+                        new
+                        {
+                            Id = 105,
+                            Capacity = 40,
+                            CategoryId = 1,
+                            DayOfWeek = "Friday",
+                            Description = "סדנה גדולה: הופכים קרטונים, בקבוקים ובדים ליצירות.",
+                            EnrolledCount = 2,
+                            InstructorName = "מלכה ויס",
+                            Location = "האולם הגדול",
+                            Price = 0m,
+                            StartDate = new DateOnly(2026, 11, 13),
+                            StartTime = new TimeOnly(10, 0, 0),
+                            Title = "יצירה מחומרים ממוחזרים",
+                            Version = new Guid("e7a9c1d3-5f6b-4dae-8a4c-6b8d0e2a4c15")
+                        },
+                        new
+                        {
+                            Id = 106,
+                            Capacity = 8,
+                            CategoryId = 4,
+                            DayOfWeek = "Tuesday",
+                            Description = "כפתורים, מכפלות ותיקונים קטנים שכל אחת צריכה לדעת.",
+                            EnrolledCount = 0,
+                            InstructorName = "רבקה גולד",
+                            Location = "חדר 5",
+                            Price = 120m,
+                            StartDate = new DateOnly(2026, 11, 17),
+                            StartTime = new TimeOnly(18, 30, 0),
+                            Title = "תיקוני תפירה",
+                            Version = new Guid("f8b0d2e4-6a7c-4ebf-9b5d-7c9e1f3b5d16")
                         });
                 });
 
@@ -287,6 +383,38 @@ namespace Chugim.Infrastructure.Persistence.Migrations
                             EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
                             Status = "Active",
                             UserId = 2
+                        },
+                        new
+                        {
+                            Id = 101,
+                            CourseId = 101,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 102,
+                            CourseId = 102,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 103,
+                            CourseId = 105,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 104,
+                            CourseId = 105,
+                            EnrolledAtUtc = new DateTime(2026, 10, 1, 8, 0, 0, 0, DateTimeKind.Utc),
+                            Status = "Active",
+                            UserId = 3
                         });
                 });
 

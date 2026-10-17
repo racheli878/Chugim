@@ -8,7 +8,11 @@ public sealed record EnrollmentResponse
     public int Id { get; init; }
     public int CourseId { get; init; }
     public string CourseTitle { get; init; } = string.Empty;
+    public int CourseCategoryId { get; init; }
     public string CourseCategoryName { get; init; } = string.Empty;
+    public DayOfWeek CourseDayOfWeek { get; init; }
+    public TimeOnly CourseStartTime { get; init; }
+    public string CourseLocation { get; init; } = string.Empty;
     public int UserId { get; init; }
     public string ParticipantName { get; init; } = string.Empty;
     public DateTime EnrolledAtUtc { get; init; }

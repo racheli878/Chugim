@@ -26,7 +26,8 @@ public sealed class MappingProfile : Profile
             .ForMember(d => d.Category, o => o.Ignore())
             .ForMember(d => d.Enrollments, o => o.Ignore());
 
-        // CourseTitle ו-CourseCategoryName ממולאים אוטומטית מ-Course.Title ו-Course.Category.Name.
+        // כל השדות שמתחילים ב-Course (CourseTitle, CourseDayOfWeek, CourseCategoryName...) ממולאים אוטומטית
+        // מ-Course.Title, Course.DayOfWeek, Course.Category.Name וכו' (flattening לפי שם).
         CreateMap<Enrollment, EnrollmentResponse>()
             .ForMember(d => d.ParticipantName, o => o.MapFrom(s => s.User.FullName));
 

@@ -43,14 +43,34 @@ internal static class SeedData
             Course(5, "אפייה ביתית", "לחמים, עוגות ועוגיות.", 3, "יהודית אורן", DayOfWeek.Thursday, 16, 30, new DateOnly(2026, 11, 5), "המטבח", 200m,
                 capacity: 8, enrolled: 0, version: "7e2a5c84-1b3d-4e6f-9a8b-4d5e6f7a8b05"),
             Course(6, "תפירה למתחילות", "הכרת מכונת התפירה ותפירת פריטים פשוטים.", 4, "רבקה גולד", DayOfWeek.Sunday, 18, 0, new DateOnly(2026, 11, 8), "חדר 5", 230m,
-                capacity: 10, enrolled: 0, version: "1f6c3d95-2e4a-4b7c-8d9e-5e6f7a8b9c06"));
+                capacity: 10, enrolled: 0, version: "1f6c3d95-2e4a-4b7c-8d9e-5e6f7a8b9c06"),
+
+            // migration "MoreDemoCourses": עוד חוגים כדי שיהיו שני עמודים, שני חוגים עם מקום אחד (לבדיקת 409)
+            // וחוג גדול. מזהים מ-101 כדי לא להתנגש בחוגים שנוצרו ידנית במסד הפיתוח.
+            Course(101, "סריגה ורקמה", "סריגה במסרגות, רקמת צלב ופריטים קטנים למתנה.", 4, "שולמית הלפרין", DayOfWeek.Monday, 17, 30, new DateOnly(2026, 11, 9), "חדר 5", 190m,
+                capacity: 2, enrolled: 1, version: "a3c5e7f9-1b2d-4f6a-8c0e-2d4f6a8c0e11"), // מקום אחד — להדגמת 409
+            Course(102, "פיסול בחימר", "עבודה בידיים, צורות בסיס וקלייה של פריט אישי.", 1, "נעמי רוזן", DayOfWeek.Wednesday, 15, 30, new DateOnly(2026, 11, 11), "חדר 3", 240m,
+                capacity: 2, enrolled: 1, version: "b4d6f8a0-2c3e-4a7b-9d1f-3e5a7b9d1f12"), // מקום אחד — להדגמת 409
+            Course(103, "קישוט עוגות", "קרם, בצק סוכר ועיצובים צבעוניים.", 3, "יהודית אורן", DayOfWeek.Tuesday, 16, 0, new DateOnly(2026, 11, 10), "המטבח", 210m,
+                capacity: 6, enrolled: 0, version: "c5e7a9b1-3d4f-4b8c-8e2a-4f6b8c0e2a13"),
+            Course(104, "הקלדה עיוורת", "הקלדה מהירה בעברית ובאנגלית, בלי להסתכל על המקלדת.", 2, "אסתר כץ", DayOfWeek.Thursday, 15, 0, new DateOnly(2026, 11, 12), "מעבדת מחשבים", 150m,
+                capacity: 12, enrolled: 0, version: "d6f8b0c2-4e5a-4c9d-9f3b-5a7c9d1f3b14"),
+            Course(105, "יצירה מחומרים ממוחזרים", "סדנה גדולה: הופכים קרטונים, בקבוקים ובדים ליצירות.", 1, "מלכה ויס", DayOfWeek.Friday, 10, 0, new DateOnly(2026, 11, 13), "האולם הגדול", 0m,
+                capacity: 40, enrolled: 2, version: "e7a9c1d3-5f6b-4dae-8a4c-6b8d0e2a4c15"), // חוג גדול — פס מילוי במקום עיגולים
+            Course(106, "תיקוני תפירה", "כפתורים, מכפלות ותיקונים קטנים שכל אחת צריכה לדעת.", 4, "רבקה גולד", DayOfWeek.Tuesday, 18, 30, new DateOnly(2026, 11, 17), "חדר 5", 120m,
+                capacity: 8, enrolled: 0, version: "f8b0d2e4-6a7c-4ebf-9b5d-7c9e1f3b5d16"));
 
         // ההרשמות תואמות ל-EnrolledCount שלמעלה (חוג 1: שתיים, חוג 2: אחת).
         var enrolledAt = new DateTime(2026, 10, 1, 8, 0, 0, DateTimeKind.Utc);
         modelBuilder.Entity<Enrollment>().HasData(
             new { Id = 1, CourseId = 1, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
             new { Id = 2, CourseId = 1, UserId = 3, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
-            new { Id = 3, CourseId = 2, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active });
+            new { Id = 3, CourseId = 2, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
+            // MoreDemoCourses — תואם ל-EnrolledCount של חוגים 101, 102, 105.
+            new { Id = 101, CourseId = 101, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
+            new { Id = 102, CourseId = 102, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
+            new { Id = 103, CourseId = 105, UserId = 2, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active },
+            new { Id = 104, CourseId = 105, UserId = 3, EnrolledAtUtc = enrolledAt, Status = EnrollmentStatus.Active });
     }
 
     private static object Course(

@@ -23,8 +23,10 @@ public sealed class EnrollmentRepository : IEnrollmentRepository
         if (courseId is int c)
             enrollments = enrollments.Where(e => e.CourseId == c);
 
+        // הרשמות פעילות קודם (Active=1 לפני Cancelled=2), ובתוכן — החדשות למעלה.
         return await enrollments
-            .OrderByDescending(e => e.EnrolledAtUtc)
+            .OrderBy(e => e.Status)
+            .ThenByDescending(e => e.EnrolledAtUtc)
             .ThenByDescending(e => e.Id)
             .ToPagedResultAsync(query, cancellationToken);
     }
