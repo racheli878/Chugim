@@ -7,7 +7,7 @@
 - **הלקוח:** תיקייה נפרדת `chugim-client` (repo נפרד). הרצה: `npm run dev` → http://localhost:5173 (השרת רץ במקביל).
   - `.env.development` נוצר ידנית מ-`.env.example` (כתובת השרת בלבד).
   - ניתובים: `/courses`, `/my`, `/admin`, `/login`, `/register`; כל כתובת אחרת → דף 404.
-- **שלב 7 הושלם** — הלקוח גמור. 8.1 README לשרת הושלם. 8.2 GitHub הושלם (הכול נדחף, נקי מסודות ומ-bin/obj). **המשימה הבאה: 8.3** פריסה ל-Render — Dockerfile, /health, תמיכה ב-URL של מסד הנתונים (39 בדיקות).
+- **שלב 7 הושלם** — הלקוח גמור. 8.1 README לשרת הושלם. 8.2 GitHub הושלם (הכול נדחף, נקי מסודות ומ-bin/obj). **8.3 בביצוע:** השרת חי ב-https://chugim-api.onrender.com, הלקוח ב-https://chugim-client.onrender.com (נשאר: CORS + בדיקה מקצה לקצה; נטפרי חוסם — בקשת פתיחה). פריסה ל-Render — Dockerfile, /health, תמיכה ב-URL של מסד הנתונים (39 בדיקות).
 - **תאריך פתיחה:** חוג חדש — היום או בעתיד (TimeProvider ב-CourseService, 3 בדיקות חדשות → 37). חוג שהתחיל נשאר ברשימה.
 - **Repos:** github.com/racheli878/Chugim (master), github.com/racheli878/chugim-client (main). כל האתר והשרת (courses, categories) למחוברות בלבד.
 - **migration שלישי `MoreDemoCourses`:** 6 חוגים נוספים (Id 101–106) — שניים עם מקום אחד (סריגה, פיסול) לבדיקת 409, וחוג של 40 מקומות.
