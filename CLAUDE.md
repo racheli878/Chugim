@@ -82,3 +82,4 @@ tests/Chugim.Tests                                                     → Appli
 - Program.cs עטוף ב-try/catch עם לוגר NLog לכשלי עלייה; `HostAbortedException` (dotnet ef) לא נחשב כשל.
 - בדיקות: `tests/Chugim.Tests/{Domain,Application,Infrastructure}`. שמות: `Method_Scenario_Expected`. ‏Domain בלי Moq ובלי מסד.
 - `Course.TryEnroll` קובע גם `enrollment.Course = this` (נמצא בבדיקות — בלעדיו TryCancel נכשל על הרשמה חדשה בזיכרון).
+- בדיקות Infrastructure: ‏`SqliteTestDatabase` — SQLite בזיכרון עם אותו AppDbContext (EnsureCreated כולל seed). ‏ConcurrencyTests = בדיקת ההוכחה הנדרשת (שני DbContext).

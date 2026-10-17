@@ -133,7 +133,7 @@ Chugim.sln
 
 ### שלב 6 — בדיקות
 - [x] **6.1** Course (Domain): Enroll כשיש מקום / כשמלא
-- [ ] **6.2** EnrollmentService עם Moq: הצלחה, חוג מלא → Conflict, כבר רשומה → Conflict, התנגשות ואז הצלחה בניסיון חוזר, חוג לא קיים → NotFound
+- [x] **6.2** EnrollmentService עם Moq: הצלחה, חוג מלא → Conflict, כבר רשומה → Conflict, התנגשות ואז הצלחה בניסיון חוזר, חוג לא קיים → NotFound
 - [ ] **6.3** בדיקת ההוכחה: שני DbContext נפרדים על אותו חוג — הראשון מצליח, השני מקבל DbUpdateConcurrencyException
 - [ ] **6.4** בדיקות נוספות: AuthService, CourseService (בסיסי)
 
