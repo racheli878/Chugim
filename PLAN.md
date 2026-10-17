@@ -7,7 +7,7 @@
 - **הלקוח:** תיקייה נפרדת `chugim-client` (repo נפרד). הרצה: `npm run dev` → http://localhost:5173 (השרת רץ במקביל).
   - `.env.development` נוצר ידנית מ-`.env.example` (כתובת השרת בלבד).
   - ניתובים: `/courses`, `/my`, `/admin`, `/login`, `/register`; כל כתובת אחרת → דף 404.
-- **המשימה הבאה: 7.2** — מסכי התחברות והרשמה.
+- **המשימה הבאה: 7.3** — דף החוגים (נכתב, ממתין לבדיקה). כל האתר והשרת (courses, categories) למחוברות בלבד.
 - **מצב הנתונים בפיתוח:** קליגרפיה (חוג 1) מלא 3/3 — מתאים להדגמת "החוג התמלא".
 - **טיפ Swagger:** ב-Authorize מדביקים רק את ה-token (מתחיל ב-`eyJ`), בלי מירכאות ובלי `Bearer`.
 
@@ -79,9 +79,9 @@ Chugim.sln
 |---|---|---|---|
 | POST | /api/auth/register | פתוח | 201, 400, 409 (מייל קיים) |
 | POST | /api/auth/login | פתוח | 200, 401 |
-| GET | /api/categories | פתוח | 200 |
-| GET | /api/courses?categoryId=&search=&hasSpots=&sortBy=&desc=&page=&pageSize= | פתוח | 200 |
-| GET | /api/courses/{id} | פתוח | 200, 404 |
+| GET | /api/categories | מחוברת | 200, 401 |
+| GET | /api/courses?categoryId=&search=&hasSpots=&sortBy=&desc=&page=&pageSize= | מחוברת | 200, 401 |
+| GET | /api/courses/{id} | מחוברת | 200, 401, 404 |
 | POST | /api/courses | Admin | 201 + Location, 400 |
 | PUT | /api/courses/{id} | Admin | 204, 400, 404, 409 |
 | DELETE | /api/courses/{id} | Admin | 204, 404, 409 (יש רשומות פעילות) |
@@ -138,7 +138,7 @@ Chugim.sln
 
 ### שלב 7 — לקוח React (Vite) — מלא ומלוטש
 - [x] **7.1** תשתית: Vite, משתני עיצוב, שכבת API (token + ProblemDetails), ניהול התחברות, מסגרת וניווט, toasts
-- [ ] **7.2** התחברות והרשמה
+- [x] **7.2** התחברות והרשמה
 - [ ] **7.3** רשימת חוגים: חיפוש, סינון, מיון, עימוד מהשרת, שורת מושבים, הרשמה + טיפול מלא ב-409
 - [ ] **7.4** ההרשמות שלי + ביטול עם אישור
 - [ ] **7.5** ניהול (מנהלת): חוגים (יצירה/עריכה/מחיקה), משתתפות בחוג, הוספת קטגוריה

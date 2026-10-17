@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace Chugim.API.Controllers;
 
 [Route("api/categories")]
+[Authorize]
+[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 public sealed class CategoriesController : ApiControllerBase
 {
     private readonly ICategoryService _categoryService;
@@ -29,7 +31,6 @@ public sealed class CategoriesController : ApiControllerBase
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(typeof(CategoryResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<ActionResult<CategoryResponse>> Create(

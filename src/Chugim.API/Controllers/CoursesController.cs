@@ -8,7 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Chugim.API.Controllers;
 
+// כל החוגים מוצגים רק למחוברות. פעולות הניהול מוגבלות בנוסף ל-Admin.
 [Route("api/courses")]
+[Authorize]
+[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 public sealed class CoursesController : ApiControllerBase
 {
     private readonly ICourseService _courseService;
@@ -20,7 +23,7 @@ public sealed class CoursesController : ApiControllerBase
         _enrollmentService = enrollmentService;
     }
 
-    /// <summary>רשימת חוגים עם סינון, מיון ועימוד — פתוח לכולם.</summary>
+    /// <summary>רשימת חוגים עם סינון, מיון ועימוד.</summary>
     [HttpGet]
     [ProducesResponseType(typeof(PagedResult<CourseResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -39,7 +42,6 @@ public sealed class CoursesController : ApiControllerBase
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(typeof(CourseResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     public async Task<ActionResult<CourseResponse>> Create(
         [FromBody] CourseRequest request, CancellationToken cancellationToken) =>
@@ -50,7 +52,6 @@ public sealed class CoursesController : ApiControllerBase
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -61,7 +62,6 @@ public sealed class CoursesController : ApiControllerBase
     [HttpDelete("{id:int}")]
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -72,7 +72,6 @@ public sealed class CoursesController : ApiControllerBase
     [HttpGet("{id:int}/enrollments")]
     [Authorize(Roles = Roles.Admin)]
     [ProducesResponseType(typeof(PagedResult<EnrollmentResponse>), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<PagedResult<EnrollmentResponse>>> GetEnrollments(

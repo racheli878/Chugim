@@ -76,7 +76,7 @@ tests/Chugim.Tests                                                     → Appli
 - Auth ב-API: ‏`AddJwtAuthentication` (מאמת לפי אותו JwtOptions), ‏`Roles.Admin` / `Roles.Participant` ל-[Authorize], ‏`User.ToCurrentUser()` בונה CurrentUser מה-claims. ‏Rate limit ‏`RateLimitPolicies.Auth`: 5 לדקה ל-IP (ב-Render צריך ForwardedHeaders כדי לקבל IP אמיתי).
 - Program.cs משתמש במתודות הרחבה (API/Extensions) — נשאר קצר וקריא.
 - Controllers יורשים `ApiControllerBase`: ‏`FromResult` (200/204 או ProblemDetails), ‏`CreatedFromResult` (201 + Location). ‏ModelState נבדק אוטומטית ע"י [ApiController] (400 עם פירוט שדות).
-- Endpoints: ‏auth/register (201, בלי Location — אין GET למשתמשת), auth/login (200); courses — GET פתוח, POST/PUT/DELETE + `{id}/enrollments` למנהלת; enrollments — [Authorize], POST למשתתפת בלבד.
+- Endpoints: ‏auth/register (201, בלי Location — אין GET למשתמשת), auth/login (200); courses ו-categories — [Authorize] ברמת ה-controller (האתר כולו למחוברות בלבד, החלטה מ-17.10); POST/PUT/DELETE + `{id}/enrollments` למנהלת; enrollments — [Authorize], POST למשתתפת בלבד.
 - JSON: enums כמחרוזות (`JsonStringEnumConverter`).
 - Pipeline: ExceptionHandling → ForwardedHeaders → CorrelationId → StatusCodePages → Swagger (גם בייצור) → HttpsRedirection → Cors → Authentication → Authorization → RateLimiter → Controllers.
 - Program.cs עטוף ב-try/catch עם לוגר NLog לכשלי עלייה; `HostAbortedException` (dotnet ef) לא נחשב כשל.
@@ -84,4 +84,5 @@ tests/Chugim.Tests                                                     → Appli
 - `Course.TryEnroll` קובע גם `enrollment.Course = this` (נמצא בבדיקות — בלעדיו TryCancel נכשל על הרשמה חדשה בזיכרון).
 - בדיקות Infrastructure: ‏`SqliteTestDatabase` — SQLite בזיכרון עם אותו AppDbContext (EnsureCreated כולל seed). ‏ConcurrencyTests = בדיקת ההוכחה הנדרשת (שני DbContext).
 - קטגוריות: מנהלת יכולה להוסיף (POST /api/categories, 409 על שם קיים). צבע הקטגוריה לא נשמר במסד — הלקוח גוזר אותו מה-Id מתוך פלטה קבועה של 8 גוונים.
-- לקוח: React 18 + Vite + React Router, JavaScript, CSS ידני עם משתני עיצוב (בלי ספריית UI). תיקייה ו-repo נפרדים: `chugim-client`. עיצוב: שורת מושבים בכל כרטיס; צבעים דיו #1E2340, נייר #F6F7FB, שזיף #7A2E5C, זעפרן #F2B33D, מרווה #4E8F72, לבנה #C2412D; גופנים Suez One (כותרות) + Assistant.
+- לקוח: React 18 + Vite + React Router, JavaScript, CSS ידני עם משתני עיצוב (בלי ספריית UI). תיקייה ו-repo נפרדים: `chugim-client`. כל האתר מאחורי התחברות (חוץ מ-/login ו-/register); יציאה → /login.
+  עיצוב מאושר (עליז לילדות): דיו #2A2433, רקע #F8F6FB, ראשי פטל #CC2E5D, מקום אחרון מנדרינה #FF8B3D, הצלחה #2F8A4C; 8 צבעי קטגוריה לפי (id-1)%8; גופנים Fredoka (כותרות ומספרים) + Rubik. כרטיס חוג בצורת "כרטיס כניסה" עם שורת מושבים ו"ספח" עם מספר המקומות הפנויים. ניסוחים בלשון נקבה, חבריים.
