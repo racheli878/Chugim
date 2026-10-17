@@ -120,7 +120,7 @@ tests/
 | Middleware | `ExceptionHandlingMiddleware` (שגיאה אחידה ולוג Error), `CorrelationIdMiddleware` (כותרת `X-Correlation-ID` ו-scope בלוג) |
 | קונפיגורציה וסודות | `appsettings.*.json` בלי סודות; User Secrets בפיתוח, משתני סביבה בייצור |
 | JWT עם 2 תפקידים | `JwtTokenGenerator`, `[Authorize(Roles = …)]`, `Participant` ו-`Admin` |
-| בדיקות xUnit ו-Moq | 37 בדיקות, כולל בדיקת שני DbContext |
+| בדיקות xUnit ו-Moq | 39 בדיקות, כולל בדיקת שני DbContext |
 | Optimistic concurrency ו-409 | `Course.Version` ו-`UnitOfWork`, עם ניסיון חוזר ב-`EnrollmentService` |
 | NLog | `nlog.config`: קונסול וקובץ יומי, עם CorrelationId בכל שורה |
 
@@ -187,6 +187,25 @@ tests/
 הפרויקט משתמש ב-**AutoMapper 14.0.0**, הגרסה האחרונה ברישיון חופשי (MIT). מגרסה 15 נדרש רישיון מסחרי.
 לגרסה הזו יש אזהרת אבטחה ידועה (GHSA-rvv3-g6hj-g44x). היא נוגעת למיפוי של גרפים עמוקים מאוד מקלט לא מהימן, וזה לא מצב שקורה כאן: המיפוי הוא מישויות לתשובות שטוחות. לכן האזהרה מושתקת במכוון ב-`Chugim.Application.csproj` (`NuGetAuditSuppress`), עם הסבר בקובץ.
 
-## פריסה
+## פריסה ל-Render
 
-ההוראות ייכתבו במשימה 8.3 (Render: PostgreSQL ו-Web Service מ-Dockerfile).
+שלושה רכיבים, כולם באותו אזור (Frankfurt, הקרוב לישראל):
+
+| רכיב ב-Render | מקור | הגדרות |
+|---|---|---|
+| **PostgreSQL** | — | נוצר ריק. ה-migrations והנתונים נוצרים בעלייה הראשונה של השרת |
+| **Web Service** (השרת) | repo `Chugim`, Runtime: **Docker** | נבנה מה-`Dockerfile`. Health Check Path: `/health` |
+| **Static Site** (הלקוח) | repo `chugim-client` | Build: `npm ci && npm run build` · Publish: `dist` · Rewrite: `/*` → `/index.html` |
+
+**משתני סביבה של השרת.** הסודות נמצאים רק כאן ולא ב-repo:
+
+| משתנה | ערך |
+|---|---|
+| `ConnectionStrings__Default` | ה-**Internal Database URL** של מסד הנתונים. השרת מקבל גם את פורמט ה-URL (`postgres://…`) וממיר אותו בעצמו |
+| `Jwt__Key` | מחרוזת אקראית של 32 תווים לפחות. Render יכול לייצר אותה ("Generate") |
+| `Cors__AllowedOrigins__0` | כתובת הלקוח, למשל `https://chugim-client.onrender.com`, בלי `/` בסוף |
+
+**משתנה הסביבה של הלקוח:** `VITE_API_URL` = כתובת השרת, למשל `https://chugim-api.onrender.com`.
+
+- **`__` במקום `:`:** משתני סביבה לא יכולים להכיל נקודתיים, ו-ASP.NET Core קורא את `ConnectionStrings__Default` כאילו נכתב `ConnectionStrings:Default`. כך אותו קוד קורא User Secrets בפיתוח ומשתני סביבה בענן.
+- **במסלול החינמי** השרת "נרדם" אחרי זמן בלי שימוש, והבקשה הראשונה אחרי זה לוקחת עד כדקה. לפני הדגמה כדאי לפתוח את `/health` כדי להעיר אותו.

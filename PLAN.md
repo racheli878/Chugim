@@ -7,7 +7,7 @@
 - **הלקוח:** תיקייה נפרדת `chugim-client` (repo נפרד). הרצה: `npm run dev` → http://localhost:5173 (השרת רץ במקביל).
   - `.env.development` נוצר ידנית מ-`.env.example` (כתובת השרת בלבד).
   - ניתובים: `/courses`, `/my`, `/admin`, `/login`, `/register`; כל כתובת אחרת → דף 404.
-- **שלב 7 הושלם** — הלקוח גמור. 8.1 README לשרת הושלם. **המשימה הבאה: 8.2** (push לשני ה-repos, קישורים הדדיים), אחריה 8.3 Render.
+- **שלב 7 הושלם** — הלקוח גמור. 8.1 README לשרת הושלם. 8.2 GitHub הושלם (הכול נדחף, נקי מסודות ומ-bin/obj). **המשימה הבאה: 8.3** פריסה ל-Render — Dockerfile, /health, תמיכה ב-URL של מסד הנתונים (39 בדיקות).
 - **תאריך פתיחה:** חוג חדש — היום או בעתיד (TimeProvider ב-CourseService, 3 בדיקות חדשות → 37). חוג שהתחיל נשאר ברשימה.
 - **Repos:** github.com/racheli878/Chugim (master), github.com/racheli878/chugim-client (main). כל האתר והשרת (courses, categories) למחוברות בלבד.
 - **migration שלישי `MoreDemoCourses`:** 6 חוגים נוספים (Id 101–106) — שניים עם מקום אחד (סריגה, פיסול) לבדיקת 409, וחוג של 40 מקומות.
@@ -149,7 +149,7 @@ Chugim.sln
 
 ### שלב 8 — הגשה
 - [x] **8.1** README: תיאור, המשאב המוגבל והטיפול בתחרות, הוראות הרצה, משתמשי דמו
-- [ ] **8.2** שני repositories ב-GitHub
+- [x] **8.2** שני repositories ב-GitHub
 - [ ] **8.3** פריסה ל-Render: PostgreSQL, שרת (Dockerfile + משתני סביבה), לקוח (Static Site)
 
 ## 7. חבילות עיקריות (גרסאות 8.x התואמות ל-.NET 8)

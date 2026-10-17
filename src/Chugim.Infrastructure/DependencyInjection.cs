@@ -22,7 +22,9 @@ public static class DependencyInjection
                 "Connection string 'Default' is missing. In development set it with 'dotnet user-secrets'.");
 
         // DbContext נרשם כ-Scoped (ברירת המחדל): מופע אחד לכל בקשה.
-        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connectionString));
+        // Normalize: מקבל גם את פורמט ה-URL ש-Render נותן (postgres://...).
+        services.AddDbContext<AppDbContext>(options =>
+            options.UseNpgsql(PostgresConnectionString.Normalize(connectionString)));
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IUserRepository, UserRepository>();

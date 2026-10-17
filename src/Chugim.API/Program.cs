@@ -39,6 +39,9 @@ try
 
     builder.Services.AddSwaggerWithJwt();
 
+    // /health — Render בודק בכתובת הזו שהשרת חי, ומעביר אליו תנועה רק אחרי שהוא עונה.
+    builder.Services.AddHealthChecks();
+
     var app = builder.Build();
 
     await app.Services.InitializeDatabaseAsync();
@@ -60,6 +63,7 @@ try
     app.UseRateLimiter();
 
     app.MapControllers();
+    app.MapHealthChecks("/health");
 
     app.Run();
 }
