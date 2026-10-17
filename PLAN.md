@@ -2,6 +2,17 @@
 
 > מצב התקדמות: משימה שהושלמה ואושרה מסומנת `[x]`.
 
+## 📍 איפה עצרנו (16.10.2026, לילה)
+- **הושלמו שלבים 0–5** (22 מתוך 34 משימות): Domain, Application, Infrastructure (כולל 2 migrations ו-seed), API מלא.
+- **נבדק בפועל:** השרת עולה, migrations מוחלים אוטומטית, התחברות + הרשמה לחוג עובדות מקצה לקצה (PowerShell).
+- **לוודא בתחילת המפגש הבא:**
+  1. Rebuild + F5 אחרי משימה 5.6 (לא נבדק עדיין) + `Invoke-RestMethod "https://localhost:7180/api/courses?sortBy=Price&descending=true&pageSize=3"`.
+  2. commit לכל מה שעוד לא נכנס (5.5, 5.6) — הודעות ב-PLAN/בשיחה.
+  3. Docker Desktop פועל ו-container ‏`postgres-dev` רץ (`docker start postgres-dev` אם לא).
+- **המשימה הבאה: 6.1** — בדיקות Domain ל-Course (‏TryEnroll כשיש מקום / כשמלא), ואחריה 6.2–6.3 (Moq + בדיקת שני DbContext).
+- **מצב הנתונים בפיתוח:** קליגרפיה (חוג 1) מלא 3/3 אחרי ההרשמה של שרה (הרשמה 4). אפשר להשתמש בכך להדגמת 409 "החוג מלא".
+- **טיפ Swagger:** ב-Authorize מדביקים רק את ה-token (מתחיל ב-`eyJ`), בלי מירכאות ובלי `Bearer`.
+
 ## 1. הרעיון
 מנהלת מפרסמת חוגים, כל חוג בנושא (קטגוריה) משלו ועם פרטים משלו: מדריכה, יום ושעה, מיקום, תאריך התחלה, מחיר, ו**מספר מקומות מקסימלי**. משתתפות נרשמות לחוגים ויכולות לבטל.
 
@@ -118,10 +129,10 @@ Chugim.sln
 - [x] **5.3** Middleware: CorrelationId (+ לוג לכל בקשה) ו-ExceptionHandling (JSON אחיד + לוג Error)
 - [x] **5.4** JWT Authentication + Authorization עם roles + Rate limiting על /api/auth
 - [x] **5.5** ApiControllerBase (Result → HTTP) + Controllers: Auth, Categories, Courses, Enrollments
-- [ ] **5.6** Program.cs — רישום, Swagger עם כפתור Authorize, סדר pipeline נכון
+- [x] **5.6** Program.cs — רישום, Swagger עם כפתור Authorize, סדר pipeline נכון
 
 ### שלב 6 — בדיקות
-- [ ] **6.1** Course (Domain): Enroll כשיש מקום / כשמלא
+- [x] **6.1** Course (Domain): Enroll כשיש מקום / כשמלא
 - [ ] **6.2** EnrollmentService עם Moq: הצלחה, חוג מלא → Conflict, כבר רשומה → Conflict, התנגשות ואז הצלחה בניסיון חוזר, חוג לא קיים → NotFound
 - [ ] **6.3** בדיקת ההוכחה: שני DbContext נפרדים על אותו חוג — הראשון מצליח, השני מקבל DbUpdateConcurrencyException
 - [ ] **6.4** בדיקות נוספות: AuthService, CourseService (בסיסי)

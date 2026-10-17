@@ -1,22 +1,12 @@
 using Chugim.Domain.Entities;
 using Chugim.Domain.Enums;
+using static Chugim.Tests.TestSupport.TestData;
 
 namespace Chugim.Tests.Domain;
 
 // בדיקות לחוקי המשאב המוגבל עצמם — בלי מסד נתונים ובלי Moq.
 public class CourseTests
 {
-    private static readonly DateTime Now = new(2026, 10, 16, 12, 0, 0, DateTimeKind.Utc);
-
-    private static Course CreateCourse(int capacity, int enrolled = 0)
-    {
-        var course = new Course { Id = 1, Title = "קליגרפיה" };
-        course.TryChangeCapacity(capacity);
-        for (var userId = 1; userId <= enrolled; userId++)
-            course.TryEnroll(userId, Now, out _);
-        return course;
-    }
-
     [Fact]
     public void TryEnroll_WhenSpotAvailable_TakesSpotAndCreatesEnrollment()
     {
